@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saldo - PREMIUN BLAK LV</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .binary-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .binary-code {
+            position: absolute;
+            color: rgba(255, 0, 0, 0.3);
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            user-select: none;
+            animation: fall linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .menu-horizontal {
+            background-color: #000;
+            padding: 10px 0;
+            border-bottom: 2px solid #ff0000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .menu-items a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .menu-items a.current {
+            color: #ff0000;
+        }
+
+        .main-title {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 2em;
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .description {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 15px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid #ff0000;
+            border-radius: 8px;
+        }
+
+        .saldo-announcement {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(255, 0, 0, 0.1);
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .whatsapp-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.05);
+        }
+
+        .footer-menu {
+            background-color: #000;
+            padding: 10px;
+            text-align: center;
+            border-top: 2px solid #ff0000;
+            margin-top: 30px;
+        }
+
+        .footer-menu p {
+            margin: 5px 0;
+            color: #aaa;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo animado con código binario -->
+    <div class="binary-background" id="binaryBackground"></div>
+
+    <div class="menu-horizontal">
+        <div class="menu-items">
+            <a href="index.html">Home</a>
+            <a href="contactos.html">Contactos</a>
+            <a href="cuenta.html">Cuentas</a>
+            <a href="saldo.html" class="current">Saldo</a>
+            
+        </div>
+    </div>
+
+    <h1 class="main-title">RECARGAS DE SALDO</h1>
+    
+    <div class="description">
+        <p>¡Bienvenido a nuestro servicio de recargas! Ofrecemos las mejores tarifas y promociones para recarga de saldo móvil. Transacciones rápidas y seguras.</p>
+    </div>
+    
+    <div class="saldo-announcement">
+        <h2>¡OFERTA ESPECIAL!</h2>
+        <p>Hola, estoy vendiendo saldo móvil 1x4 (en tarjeta)</p>
+        <p>Por cada 4 CUP de tranferencia, recibes 1 de saldo móvil</p>
+        <p>Promoción válida por tiempo limitado</p>
+        
+        <a href="https://wa.me/5355884820" class="whatsapp-button" target="_blank">
+            Más información por WhatsApp
+        </a>
+    </div>
+
+    <div class="footer-menu">
+        <p>PhantomVex Pages® x Admin PREMIUN BLAK LV</p>
+        <p>© 2025 Todos los derechos reservados</p>
+    </div>
+
+    <script>
+        // Generador de código binario animado
+        document.addEventListener('DOMContentLoaded', function() {
+            const background = document.getElementById('binaryBackground');
+            const characters = '01';
+            const fontSize = 14;
+            const columns = Math.floor(window.innerWidth / fontSize);
+            
+            for (let i = 0; i < columns; i++) {
+                const binary = document.createElement('div');
+                binary.className = 'binary-code';
+                binary.style.left = (i * fontSize) + 'px';
+                binary.style.animationDuration = (10 + Math.random() * 20) + 's';
+                binary.style.animationDelay = (Math.random() * 5) + 's';
+                
+                let binaryText = '';
+                const length = 20 + Math.floor(Math.random() * 30);
+                for (let j = 0; j < length; j++) {
+                    binaryText += characters.charAt(Math.floor(Math.random() * characters.length)) + ' ';
+                }
+                
+                binary.textContent = binaryText.trim();
+                background.appendChild(binary);
+            }
+        });
+    </script>
+</body>
+</html>
