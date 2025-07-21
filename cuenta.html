@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuentas - PREMIUN BLAK LV</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .binary-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .binary-code {
+            position: absolute;
+            color: rgba(255, 0, 0, 0.3);
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            user-select: none;
+            animation: fall linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .menu-horizontal {
+            background-color: #000;
+            padding: 10px 0;
+            border-bottom: 2px solid #ff0000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .menu-items a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        .menu-items a.current {
+            color: #ff0000;
+        }
+
+        .main-title {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 2em;
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .description {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 15px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid #ff0000;
+            border-radius: 8px;
+        }
+
+        .announcements {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .announcement {
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            padding: 15px;
+            width: 280px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+        }
+
+        .announcement.sold {
+            border-color: #666;
+            position: relative;
+            opacity: 0.7;
+        }
+
+        .announcement.sold::after {
+            content: "VENDIDO";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff0000;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .announcement.reference {
+            border-color: #25D366;
+        }
+
+        .announcement img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #333;
+        }
+
+        .announcement h3 {
+            color: #ff0000;
+            margin-top: 0;
+        }
+
+        .announcement.reference h3 {
+            color: #25D366;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #ffcc00;
+            margin: 10px 0;
+        }
+
+        .footer-menu {
+            background-color: #000;
+            padding: 10px;
+            text-align: center;
+            border-top: 2px solid #ff0000;
+            margin-top: 30px;
+        }
+
+        .footer-menu p {
+            margin: 5px 0;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .announcement {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo animado con código binario -->
+    <div class="binary-background" id="binaryBackground"></div>
+
+    <div class="menu-horizontal">
+        <div class="menu-items">
+            <a href="index.html">Home</a>
+            <a href="contactos.html">Contactos</a>
+            <a href="cuenta.html" class="current">Cuentas</a>
+            <a href="saldo.html">Saldo</a>
+           
+        </div>
+    </div>
+
+    <h1 class="main-title">COMPRA Y VENTA DE CUENTAS</h1>
+    
+    <div class="description">
+        <p>¡Bienvenido a nuestro apartado de cuentas! Especialistas en cuentas de Free Fire. Compramos y vendemos cuentas premium con personajes exclusivos, skins raras y elementos especiales. Transacciones seguras con más de 4 años de experiencia en el mercado.</p>
+    </div>
+    
+    <div class="announcements">
+        <!-- Plantilla de cuenta DISPONIBLE -->
+        <div class="announcement">
+            <img src="imagen/1.png" alt="Cuenta Free Fire 1">
+            <h3>Cuenta Diamante V</h3>
+            <div class="price">$150</div>
+            <p>• 15 skins de arma<br>• 8 personajes legendarios<br>• 3 vehículos exclusivos<br>• Nivel 70</p>
+        </div>
+
+        <!-- Plantilla de cuenta VENDIDA -->
+        <div class="announcement sold">
+            <img src="imagen/2.png" alt="Cuenta Free Fire 2">
+            <h3>Cuenta Heroico III</h3>
+            <div class="price">$250</div>
+            <p>• 22 skins de arma<br>• 12 personajes<br>• Todos los vehículos<br>• Nivel 85</p>
+        </div>
+
+        <!-- Plantilla de REFERENCIA -->
+        <div class="announcement reference">
+            <img src="imagen/3.png" alt="Referencia">
+            <h3>Referencia de Cliente</h3>
+            <p>"Excelente servicio, cuenta entregada inmediatamente después del pago. Todo legal y seguro. 100% recomendado!"</p>
+            <p>- Usuario123 (15/06/2023)</p>
+        </div>
+
+        <!-- Más plantillas (copiar y pegar para nuevos anuncios) -->
+        <!--
+        <div class="announcement">
+            <img src="imagen/X.png" alt="Cuenta Free Fire">
+            <h3>TÍTULO CUENTA</h3>
+            <div class="price">$PRECIO</div>
+            <p>• DETALLE 1<br>• DETALLE 2<br>• DETALLE 3</p>
+        </div>
+
+        <div class="announcement sold">
+            <img src="imagen/X.png" alt="Cuenta vendida">
+            <h3>TÍTULO CUENTA</h3>
+            <div class="price">$PRECIO</div>
+            <p>• DETALLE 1<br>• DETALLE 2<br>• DETALLE 3</p>
+        </div>
+
+        <div class="announcement reference">
+            <img src="imagen/X.png" alt="Referencia">
+            <h3>Referencia de Cliente</h3>
+            <p>"TEXTO DE REFERENCIA"</p>
+            <p>- NOMBRE (FECHA)</p>
+        </div>
+        -->
+    </div>
+
+    <div class="footer-menu">
+        <p>PhantomVex Pages® x Admin PREMIUN BLAK LV</p>
+        <p>© 2025 Todos los derechos reservados</p>
+    </div>
+
+    <script>
+        // Generador de código binario animado
+        document.addEventListener('DOMContentLoaded', function() {
+            const background = document.getElementById('binaryBackground');
+            const characters = '01';
+            const fontSize = 14;
+            const columns = Math.floor(window.innerWidth / fontSize);
+            
+            for (let i = 0; i < columns; i++) {
+                const binary = document.createElement('div');
+                binary.className = 'binary-code';
+                binary.style.left = (i * fontSize) + 'px';
+                binary.style.animationDuration = (10 + Math.random() * 20) + 's';
+                binary.style.animationDelay = (Math.random() * 5) + 's';
+                
+                let binaryText = '';
+                const length = 20 + Math.floor(Math.random() * 30);
+                for (let j = 0; j < length; j++) {
+                    binaryText += characters.charAt(Math.floor(Math.random() * characters.length)) + ' ';
+                }
+                
+                binary.textContent = binaryText.trim();
+                background.appendChild(binary);
+            }
+        });
+    </script>
+</body>
+</html>
