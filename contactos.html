@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - PREMIUN BLAK LV</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Animación de código binario */
+        .binary-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .binary-code {
+            position: absolute;
+            color: rgba(255, 0, 0, 0.7);
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            user-select: none;
+            animation: fall linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .menu-horizontal {
+            background-color: #000;
+            padding: 10px 0;
+            border-bottom: 2px solid #ff0000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+            flex-wrap: wrap;
+        }
+
+        .menu-items {
+            display: flex;
+            margin-left: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .menu-items a {
+            color: white;
+            text-decoration: none;
+            margin: 5px 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s;
+            font-size: 14px;
+        }
+
+        .menu-items a:hover {
+            color: #ff0000;
+        }
+
+        .admin-panel {
+            margin-right: 10px;
+            color: white;
+            font-size: 18px;
+        }
+
+        .contact-container {
+            text-align: center;
+            padding: 30px 10px;
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .profile-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #ff0000;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            background-color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .owner-name {
+            font-size: 1.5em;
+            color: #ff0000;
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+        }
+
+        .welcome-message {
+            max-width: 500px;
+            margin: 0 auto 30px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid #ff0000;
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px auto;
+            max-width: 600px;
+        }
+
+        .payment-method {
+            background-color: rgba(255, 0, 0, 0.2);
+            border: 1px solid #ff0000;
+            border-radius: 8px;
+            padding: 10px 15px;
+            animation: pulse 2s infinite;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .contact-info {
+            margin: 30px auto;
+            max-width: 500px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #ff0000;
+        }
+
+        .contact-item {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: #ff0000;
+            text-decoration: underline;
+        }
+
+        .whatsapp-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 15px;
+        }
+
+        .whatsapp-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #25D366;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-circle:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .company-name {
+            font-size: 1.2em;
+            color: #ff0000;
+            font-weight: bold;
+        }
+
+        .footer-menu {
+            background-color: #000;
+            padding: 10px;
+            text-align: center;
+            border-top: 2px solid #ff0000;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .footer-menu p {
+            margin: 3px 0;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        @media (min-width: 768px) {
+            .menu-items a {
+                font-size: 16px;
+                margin: 0 15px;
+            }
+            .profile-circle {
+                width: 180px;
+                height: 180px;
+            }
+            .owner-name {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Fondo animado con código binario -->
+    <div class="binary-background" id="binaryBackground"></div>
+
+    <div class="menu-horizontal">
+        <div class="menu-items">
+            <a href="index.html">Home</a>
+            <a href="contactos.html" style="color: #ff0000;">Contactos</a>
+            <a href="cuenta.html">Cuentas</a>
+            <a href="saldo.html">Saldo</a>
+         
+        </div>
+        <div class="admin-panel">
+            🔒
+        </div>
+    </div>
+
+    <div class="contact-container">
+        <div class="profile-circle">
+            <img src="imagen/1.jpg" alt="Foto de perfil">
+        </div>
+        
+        <h2 class="owner-name">Yannier Espinoza Utria</h2>
+        
+        <div class="welcome-message">
+            <p>¡Bienvenido a nuestra página de contactos! Esperamos que esta plataforma sea de su agrado y de gran utilidad para todas sus necesidades.</p>
+        </div>
+        
+        <h3>Métodos de pago aceptados:</h3>
+        <div class="payment-methods">
+            <div class="payment-method">Tarjeta</div>
+            <div class="payment-method">Saldo</div>
+            <div class="payment-method">Zelle</div>
+            <div class="payment-method">USDT</div>
+            <div class="payment-method">PayPal</div>
+        </div>
+        
+        <div class="contact-info">
+            <h3>Puedes contactarnos:</h3>
+            
+            <div class="contact-item">
+                <a href="https://wa.me/5355884820" target="_blank">📞 +5355884820</a>
+            </div>
+            
+            <div class="contact-item">
+                <a href="mailto:yanniertutranka@gmail.com">✉️ yanniertutranka@gmail.com</a>
+            </div>
+            
+            <div class="whatsapp-group">
+                <div class="whatsapp-circle" onclick="window.open('https://chat.whatsapp.com/LvbMVOuXe3C46ctSLWA7jA?mode=ac_c', '_blank')">
+                    <img src="imagen/1.jpg" alt="WhatsApp Group">
+                </div>
+                <div class="company-name">PREMIUN BLAK LV</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-menu">
+        <p>PhantomVex Pages® x Admin PREMIUN BLAK LV</p>
+        <p>© 2025 Todos los derechos reservados</p>
+    </div>
+
+    <script>
+        // Generador de código binario animado
+        document.addEventListener('DOMContentLoaded', function() {
+            const background = document.getElementById('binaryBackground');
+            const characters = '01';
+            const fontSize = 14;
+            const density = window.innerWidth < 768 ? 0.8 : 1.2;
+            
+            function createBinary() {
+                const columns = Math.floor(window.innerWidth / (fontSize * density));
+                
+                background.innerHTML = '';
+                
+                for (let i = 0; i < columns; i++) {
+                    const binary = document.createElement('div');
+                    binary.className = 'binary-code';
+                    binary.style.left = (i * fontSize * density) + 'px';
+                    binary.style.animationDuration = (8 + Math.random() * 15) + 's';
+                    binary.style.animationDelay = (Math.random() * 3) + 's';
+                    
+                    let binaryText = '';
+                    const length = 30 + Math.floor(Math.random() * 50);
+                    for (let j = 0; j < length; j++) {
+                        binaryText += characters.charAt(Math.floor(Math.random() * characters.length)) + ' ';
+                    }
+                    
+                    binary.textContent = binaryText.trim();
+                    background.appendChild(binary);
+                }
+            }
+            
+            createBinary();
+            
+            window.addEventListener('resize', function() {
+                createBinary();
+            });
+        });
+    </script>
+</body>
+</html>
