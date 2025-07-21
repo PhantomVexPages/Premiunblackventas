@@ -27,7 +27,7 @@
 
         .binary-code {
             position: absolute;
-            color: rgba(255, 0, 0, 0.7); /* Más visibilidad */
+            color: rgba(255, 0, 0, 0.7);
             font-family: 'Courier New', monospace;
             font-size: 14px;
             user-select: none;
@@ -84,7 +84,7 @@
             text-align: center;
             padding: 50px 10px;
             position: relative;
-            margin-bottom: 60px; /* Espacio para el footer */
+            margin-bottom: 60px;
         }
 
         .company-title {
@@ -161,6 +161,14 @@
             font-size: 12px;
         }
 
+        /* Estilos para el chat */
+        #ConnectyCube_chat-widget {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 1000;
+        }
+
         @media (min-width: 768px) {
             .menu-items a {
                 font-size: 16px;
@@ -174,6 +182,12 @@
             }
         }
     </style>
+    
+    <!-- Scripts para el chat en vivo -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/connectycube@4/dist/connectycube.min.js"></script>
+    <script src="https://unpkg.com/@connectycube/chat-widget@latest/dist/index.umd.js"></script>
 </head>
 <body>
     <!-- Fondo animado con código binario -->
@@ -204,7 +218,7 @@
     </div>
 
     <div class="footer-menu">
-        <p>PhantomVex Pages® x Admin PREMIUN BLAK LV</p>
+        <p>PREMIUN BLAK LV - Compra y venta de cuentas y recargas de saldo</p>
         <p>© 2023 Todos los derechos reservados</p>
     </div>
 
@@ -214,12 +228,11 @@
             const background = document.getElementById('binaryBackground');
             const characters = '01';
             const fontSize = 14;
-            const density = window.innerWidth < 768 ? 0.8 : 1.2; // Más densidad en móvil
+            const density = window.innerWidth < 768 ? 0.8 : 1.2;
             
             function createBinary() {
                 const columns = Math.floor(window.innerWidth / (fontSize * density));
                 
-                // Limpiar binarios existentes
                 background.innerHTML = '';
                 
                 for (let i = 0; i < columns; i++) {
@@ -229,7 +242,6 @@
                     binary.style.animationDuration = (8 + Math.random() * 15) + 's';
                     binary.style.animationDelay = (Math.random() * 3) + 's';
                     
-                    // Crear cadena binaria más larga
                     let binaryText = '';
                     const length = 30 + Math.floor(Math.random() * 50);
                     for (let j = 0; j < length; j++) {
@@ -243,10 +255,25 @@
             
             createBinary();
             
-            // Recrear al cambiar tamaño de pantalla
             window.addEventListener('resize', function() {
                 createBinary();
             });
+
+            // Configuración del chat en vivo
+            const chatWidgetContainer = document.createElement('div');
+            chatWidgetContainer.id = 'ConnectyCube_chat-widget';
+            document.body.appendChild(chatWidgetContainer);
+            
+            const props = {
+                appId: 9187,
+                authKey: '1137971C-90E6-4AA1-B587-34F799813576',
+                userId: '45', // a User Id from your system
+                userName: 'Samuel', // how other users will see your user name
+                showOnlineUsersTab: false,
+                splitView: true,
+            };
+            
+            ReactDOM.createRoot(chatWidgetContainer).render(React.createElement(ConnectyCubeChatWidget, props));
         });
     </script>
 </body>
