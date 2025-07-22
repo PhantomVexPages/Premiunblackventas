@@ -14,7 +14,6 @@
             overflow-x: hidden;
         }
 
-        /* Animación de código binario */
         .binary-background {
             position: fixed;
             top: 0;
@@ -135,7 +134,6 @@
             font-weight: bold;
         }
 
-        /* Estilos para el formulario de contacto */
         .contact-form {
             max-width: 500px;
             margin: 30px auto;
@@ -149,6 +147,13 @@
             color: #ff0000;
             text-align: center;
             margin-top: 0;
+        }
+
+        .contact-description {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            font-size: 1.1em;
         }
 
         .form-group {
@@ -277,6 +282,9 @@
         <!-- Formulario de contacto -->
         <div class="contact-form">
             <h2>CONTÁCTANOS</h2>
+            <div class="contact-description">
+                ¿Deseas una cuenta o comprar saldo? Envíame un correo electrónico para atenderte
+            </div>
             <form id="emailForm">
                 <div class="form-group">
                     <label for="email">Tu correo electrónico:</label>
@@ -351,15 +359,11 @@
                     return;
                 }
 
-                // Envío del formulario (simulado)
+                // Envío del formulario
                 statusMessage.textContent = 'Enviando mensaje...';
                 statusMessage.className = 'status-message';
                 
-                // Simulamos un envío con setTimeout
                 setTimeout(function() {
-                    // Aquí normalmente harías una petición a un servidor
-                    // Para este ejemplo, simulamos el envío
-                    
                     // Crear el enlace mailto
                     const subject = "Mensaje desde PREMIUN BLAK LV";
                     const body = `Correo del remitente: ${email}%0D%0A%0D%0AMensaje:%0D%0A${message}`;
