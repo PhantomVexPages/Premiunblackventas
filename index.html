@@ -135,6 +135,78 @@
             font-weight: bold;
         }
 
+        /* Estilos para el formulario de contacto */
+        .contact-form {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+        }
+
+        .contact-form h2 {
+            color: #ff0000;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background-color: #111;
+            border: 1px solid #ff0000;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            display: block;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #cc0000;
+        }
+
+        .status-message {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .success {
+            color: #00ff00;
+        }
+
+        .error {
+            color: #ff0000;
+        }
+
         @keyframes moveTitle {
             0% {
                 transform: translateX(-5px);
@@ -161,14 +233,6 @@
             font-size: 12px;
         }
 
-        /* Estilos para el chat */
-        #ConnectyCube_chat-widget {
-            position: fixed;
-            bottom: 80px;
-            right: 20px;
-            z-index: 1000;
-        }
-
         @media (min-width: 768px) {
             .menu-items a {
                 font-size: 16px;
@@ -182,12 +246,6 @@
             }
         }
     </style>
-    
-    <!-- Scripts para el chat en vivo -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/connectycube@4/dist/connectycube.min.js"></script>
-    <script src="https://unpkg.com/@connectycube/chat-widget@latest/dist/index.umd.js"></script>
 </head>
 <body>
     <!-- Fondo animado con código binario -->
@@ -214,6 +272,23 @@
             <p>✅<span class="highlight">ADMINISTRADOR☢️ NACIONAL📲 DE C/V👀 EN CUBA🇨🇺</span><br>
             + <span class="highlight">4 AÑOS🌟 DE EXPERIENCIAS☣️</span><br>
             + <span class="highlight">1000 TRATOS 🗯️</span></p>
+        </div>
+
+        <!-- Formulario de contacto -->
+        <div class="contact-form">
+            <h2>CONTÁCTANOS</h2>
+            <form id="emailForm">
+                <div class="form-group">
+                    <label for="email">Tu correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">ENVIAR MENSAJE</button>
+                <div id="statusMessage" class="status-message"></div>
+            </form>
         </div>
     </div>
 
@@ -259,21 +334,47 @@
                 createBinary();
             });
 
-            // Configuración del chat en vivo
-            const chatWidgetContainer = document.createElement('div');
-            chatWidgetContainer.id = 'ConnectyCube_chat-widget';
-            document.body.appendChild(chatWidgetContainer);
-            
-            const props = {
-                appId: 9187,
-                authKey: '1137971C-90E6-4AA1-B587-34F799813576',
-                userId: '45', // a User Id from your system
-                userName: 'Samuel', // how other users will see your user name
-                showOnlineUsersTab: false,
-                splitView: true,
-            };
-            
-            ReactDOM.createRoot(chatWidgetContainer).render(React.createElement(ConnectyCubeChatWidget, props));
+            // Formulario de contacto
+            const emailForm = document.getElementById('emailForm');
+            const statusMessage = document.getElementById('statusMessage');
+
+            emailForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                // Validación simple
+                if (!email || !message) {
+                    statusMessage.textContent = 'Por favor completa todos los campos';
+                    statusMessage.className = 'status-message error';
+                    return;
+                }
+
+                // Envío del formulario (simulado)
+                statusMessage.textContent = 'Enviando mensaje...';
+                statusMessage.className = 'status-message';
+                
+                // Simulamos un envío con setTimeout
+                setTimeout(function() {
+                    // Aquí normalmente harías una petición a un servidor
+                    // Para este ejemplo, simulamos el envío
+                    
+                    // Crear el enlace mailto
+                    const subject = "Mensaje desde PREMIUN BLAK LV";
+                    const body = `Correo del remitente: ${email}%0D%0A%0D%0AMensaje:%0D%0A${message}`;
+                    const mailtoLink = `mailto:yanniertutranka@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+                    
+                    // Abrir el cliente de correo
+                    window.location.href = mailtoLink;
+                    
+                    statusMessage.textContent = 'Mensaje enviado con éxito. Gracias por contactarnos.';
+                    statusMessage.className = 'status-message success';
+                    
+                    // Limpiar el formulario
+                    emailForm.reset();
+                }, 1500);
+            });
         });
     </script>
 </body>
