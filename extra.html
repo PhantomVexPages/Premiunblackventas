@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PREMIUN BLAK LV SHOP</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+            font-size: 24px;
+            overflow: hidden;
+        }
+        
+        .emoji {
+            position: absolute;
+            animation: float 15s infinite linear;
+            opacity: 0.7;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px) rotate(360deg);
+            }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 255, 0.5);
+            border: 1px solid #00f;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            color: white;
+            text-shadow: 0 0 10px #00f, 0 0 20px #00f;
+            animation: slide 3s infinite alternate;
+            font-size: 2.5rem;
+        }
+        
+        @keyframes slide {
+            0% {
+                transform: translateX(-10px);
+            }
+            100% {
+                transform: translateX(10px);
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #00f;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #00f;
+            border-radius: 5px;
+            background-color: #111;
+            color: white;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #00f;
+            box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+        }
+        
+        .account-details {
+            background-color: rgba(0, 0, 50, 0.3);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border: 1px solid #00f;
+        }
+        
+        .payment-method {
+            display: none;
+        }
+        
+        button {
+            background-color: #00f;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 30px auto;
+            width: 200px;
+            text-align: center;
+        }
+        
+        button:hover {
+            background-color: #005;
+            box-shadow: 0 0 15px rgba(0, 0, 255, 0.7);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .required::after {
+            content: " *";
+            color: red;
+        }
+        
+        #loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+            color: #00f;
+        }
+        
+        #statusMessage {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.2rem;
+        }
+        
+        .success {
+            color: #0f0;
+        }
+        
+        .error {
+            color: #f00;
+        }
+    </style>
+</head>
+<body>
+    <div class="background" id="emojiBackground"></div>
+    
+    <div class="container">
+        <header>
+            <h1>PREMIUN BLAK LV SHOP</h1>
+            <p class="subtitle">¿Quieres venderme tus cuentas? Aquí puedes hacerlo enviándome una solicitud acá abajo 👇🏻:</p>
+        </header>
+        
+        <form id="accountForm">
+            <div class="form-group">
+                <label for="name" class="required">Nombre y Apellido</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="userEmail" class="required">Correo electrónico personal</label>
+                <input type="email" id="userEmail" name="userEmail" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone" class="required">Número de teléfono (+53)</label>
+                <input type="tel" id="phone" name="phone" pattern="\+53[0-9]{8}" placeholder="+53xxxxxxxx" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="region" class="required">Región</label>
+                <select id="region" name="region" required>
+                    <option value="">Seleccione una región</option>
+                    <option value="EE/UU">EE/UU</option>
+                    <option value="N/A">N/A</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="vinculation" class="required">Vinculación de la cuenta</label>
+                <select id="vinculation" name="vinculation" required>
+                    <option value="">Seleccione una vinculación</option>
+                    <option value="Google">Google</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Apple">Apple</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            
+            <div class="account-details">
+                <h3>Datos de la cuenta</h3>
+                
+                <div class="form-group">
+                    <label for="accountEmail" class="required">Correo electrónico de la cuenta</label>
+                    <input type="email" id="accountEmail" name="accountEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="accountPassword" class="required">Contraseña</label>
+                    <input type="text" id="accountPassword" name="accountPassword" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmationEmail">Correo de confirmación (si tiene)</label>
+                    <input type="email" id="confirmationEmail" name="confirmationEmail">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmationPassword">Contraseña del correo de confirmación</label>
+                    <input type="text" id="confirmationPassword" name="confirmationPassword">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="paymentMethod" class="required">Método de pago</label>
+                <select id="paymentMethod" name="paymentMethod" required>
+                    <option value="">Seleccione un método</option>
+                    <option value="tarjeta">Tarjeta</option>
+                    <option value="saldo">Saldo</option>
+                </select>
+            </div>
+            
+            <div id="cardPayment" class="payment-method">
+                <div class="form-group">
+                    <label for="cardNumber" class="required">Número de tarjeta</label>
+                    <input type="text" id="cardNumber" name="cardNumber" pattern="[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{4}" placeholder="xxxx-xxxx-xxxx-xxxx">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmationNumber" class="required">Número de confirmación</label>
+                    <input type="text" id="confirmationNumber" name="confirmationNumber">
+                </div>
+            </div>
+            
+            <div id="balancePayment" class="payment-method">
+                <div class="form-group">
+                    <label for="transferPhone" class="required">Número de teléfono a transferir</label>
+                    <input type="tel" id="transferPhone" name="transferPhone" pattern="\+53[0-9]{8}" placeholder="+53xxxxxxxx">
+                </div>
+            </div>
+            
+            <div id="statusMessage"></div>
+            
+            <button type="submit">Enviar Solicitud</button>
+        </form>
+        
+        <footer>
+            <p>PhantomVex Pages® 2025</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const emojis = ['💰', '💳', '💵', '💲', '💶', '💷', '💸', '💱', '💹', '🧧', '💴', '💎', '💍', '💗', '💓', '💘'];
+            const background = document.getElementById('emojiBackground');
+            
+            // Crear fondo animado con emojis
+            for (let i = 0; i < 50; i++) {
+                const emoji = document.createElement('div');
+                emoji.className = 'emoji';
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = Math.random() * 100 + 'vw';
+                emoji.style.top = Math.random() * 100 + 'vh';
+                emoji.style.animationDuration = 10 + Math.random() * 20 + 's';
+                emoji.style.animationDelay = Math.random() * 5 + 's';
+                emoji.style.fontSize = (20 + Math.random() * 30) + 'px';
+                background.appendChild(emoji);
+            }
+            
+            // Mostrar/ocultar métodos de pago según selección
+            const paymentMethod = document.getElementById('paymentMethod');
+            const cardPayment = document.getElementById('cardPayment');
+            const balancePayment = document.getElementById('balancePayment');
+            
+            paymentMethod.addEventListener('change', function() {
+                cardPayment.style.display = 'none';
+                balancePayment.style.display = 'none';
+                
+                if (this.value === 'tarjeta') {
+                    cardPayment.style.display = 'block';
+                } else if (this.value === 'saldo') {
+                    balancePayment.style.display = 'block';
+                }
+            });
+            
+            // Manejar el envío del formulario con mailto
+            const form = document.getElementById('accountForm');
+            const statusMessage = document.getElementById('statusMessage');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validar número de teléfono
+                const phone = document.getElementById('phone').value;
+                if (!phone.startsWith('+53')) {
+                    statusMessage.textContent = 'El número de teléfono debe comenzar con +53';
+                    statusMessage.className = 'error';
+                    return;
+                }
+                
+                // Validar método de pago
+                const method = paymentMethod.value;
+                if (method === 'tarjeta') {
+                    const cardNumber = document.getElementById('cardNumber').value;
+                    if (!/^\d{4}-\d{4}-\d{4}-\d{4}$/.test(cardNumber)) {
+                        statusMessage.textContent = 'Por favor ingrese un número de tarjeta válido (xxxx-xxxx-xxxx-xxxx)';
+                        statusMessage.className = 'error';
+                        return;
+                    }
+                } else if (method === 'saldo') {
+                    const transferPhone = document.getElementById('transferPhone').value;
+                    if (!transferPhone.startsWith('+53')) {
+                        statusMessage.textContent = 'El número de teléfono para transferencia debe comenzar con +53';
+                        statusMessage.className = 'error';
+                        return;
+                    }
+                }
+                
+                // Recopilar datos del formulario
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                
+                // Crear el cuerpo del mensaje
+                let emailBody = `Nueva solicitud de cuenta:\n\n`;
+                emailBody += `Nombre: ${data.name}\n`;
+                emailBody += `Correo personal: ${data.userEmail}\n`;
+                emailBody += `Teléfono: ${data.phone}\n`;
+                emailBody += `Región: ${data.region}\n`;
+                emailBody += `Vinculación: ${data.vinculation}\n\n`;
+                emailBody += `Datos de la cuenta:\n`;
+                emailBody += `Correo: ${data.accountEmail}\n`;
+                emailBody += `Contraseña: ${data.accountPassword}\n`;
+                emailBody += `Correo de confirmación: ${data.confirmationEmail || 'No proporcionado'}\n`;
+                emailBody += `Contraseña de confirmación: ${data.confirmationPassword || 'No proporcionado'}\n\n`;
+                emailBody += `Método de pago: ${data.paymentMethod}\n`;
+                if (data.paymentMethod === 'tarjeta') {
+                    emailBody += `Número de tarjeta: ${data.cardNumber}\n`;
+                    emailBody += `Número de confirmación: ${data.confirmationNumber}\n`;
+                } else {
+                    emailBody += `Teléfono para transferencia: ${data.transferPhone}\n`;
+                }
+                emailBody += `\n---\nEnviado desde PREMIUN BLAK LV SHOP`;
+                
+                // Crear el enlace mailto
+                const subject = "Nueva solicitud de cuenta - PREMIUN BLAK LV SHOP";
+                const mailtoLink = `mailto:petacongonzalezmanjarres@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+                
+                // Mostrar mensaje y redirigir
+                statusMessage.textContent = 'Redirigiendo a tu cliente de correo...';
+                statusMessage.className = 'success';
+                
+                // Abrir cliente de correo
+                setTimeout(() => {
+                    window.location.href = mailtoLink;
+                    
+                    // Limpiar formulario después de un breve retraso
+                    setTimeout(() => {
+                        form.reset();
+                        cardPayment.style.display = 'none';
+                        balancePayment.style.display = 'none';
+                        statusMessage.textContent = '';
+                    }, 1000);
+                }, 500);
+            });
+        });
+    </script>
+</body>
+      </html>
